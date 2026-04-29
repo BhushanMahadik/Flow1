@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flow – The Future of Green Energy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+/* ─── RESET & BASE ──────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+
+body {
+  font-family: 'Figtree', sans-serif;
+  overflow-x: hidden;
+}
+
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{cursor:pointer;font-family:inherit;border:none;outline:none}
+
+/* ─── CSS VARIABLES ─────────────────────────────────────── */
+:root{
+  --green-dark:#092c1a;
+  --green-mid:#0e3320;
+  --green-deep:#061810;
+  --lime:#c5f135;
+  --lime-hover:#d4f94a;
+  --cream:#faf5ee;
+  --cream2:#f5ede0;
+  --text:#1a1a1a;
+  --text-muted:#666;
+  --text-light:#888;
+  --border:#e5e5e5;
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:20px;
+  --radius-xl:24px;
+  --transition:0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--lime);border-radius:3px}
+
+/* ─── NAVBAR ────────────────────────────────────────────── */
+.navbar{
+  position:sticky;top:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 52px;height:68px;
+  background:var(--green-dark);
+  backdrop-filter:blur(10px);
+}
+.nav-left{display:flex;align-items:center;gap:48px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-icon{
+  width:36px;height:36px;background:var(--lime);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.nav-logo-icon svg{width:18px;height:18px}
+.nav-logo-text{color:#fff;font-size:19px;font-weight:700;letter-spacing:-0.3px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{
+  color:rgba(255,255,255,0.75);font-size:14px;font-weight:450;
+  transition:color var(--transition);letter-spacing:0.01em;
+}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  background:transparent;border:1.5px solid rgba(255,255,255,0.4);
+  color:#fff;padding:10px 24px;border-radius:50px;
+  font-size:14px;font-weight:500;
+  transition:background var(--transition),border-color var(--transition);
+}
+.nav-cta:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.6)}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero-wrapper{background:var(--green-dark);overflow:hidden}
+.hero{
+  position:relative;
+  min-height: 1000px;
+  display:flex;
+  align-items: flex-start;
+  justify-content:center;
+  overflow:hidden;
+  padding-top: 0;
+}
+
+/* Image cards */
+.hero-card{
+  position:absolute;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  background:#1a3020;
+}
+.hero-card img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Card positions */
+.hero-card-dam{
+  left:0;
+  top: 165px;
+  width:288px;
+  height:394px;
+  border-radius:0 var(--radius-lg) var(--radius-lg) 0;
+  animation:slideLeft 0.85s cubic-bezier(0.22,1,0.36,1) 0.05s both;
+}
+.hero-card-ev{
+  right:0;
+  top: 125px;
+  width:288px;
+  height:276px;
+  border-radius:var(--radius-lg) 0 0 var(--radius-lg);
+  animation:slideRight 0.85s cubic-bezier(0.22,1,0.36,1) 0.15s both;
+}
+
+.hero-card-wind {
+  left: 200px;
+  top: 650px;
+  width: 480px;
+  height: 250px;
+  border-radius: var(--radius-lg);
+  animation: slideUp 0.85s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+  position: absolute;
+  overflow: hidden;
+}
+
+.hero-card-wind::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-card-wind::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.06) 0%,
+      rgba(255,255,255,0.03) 30%,
+      rgba(9,44,26,0.6) 65%,
+      rgba(6,24,16,0.95) 100%
+    );
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-card-wind img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter:
+    brightness(0.75)
+    contrast(0.9)
+    saturate(0.7)
+    hue-rotate(20deg);
+  transform: scale(1.05);
+}
+
+.hero-card-solar{
+  right:100px;
+  top: 550px;
+  width:318px;
+  height:394px;
+  border-radius:16px;
+  animation:slideRight 0.85s cubic-bezier(0.22,1,0.36,1) 0.4s both;
+}
+
+@keyframes slideLeft{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:none}}
+@keyframes slideRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+.hero-center{
+  position:relative;z-index:10;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  max-width:640px;padding:0 32px;
+  padding-top: 95px;
+  animation:fadeUp 1s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.78);font-size:13.5px;font-weight:450;
+  margin-bottom:22px;
+}
+.hero-badge-icon{
+  width:22px;height:22px;background:var(--lime);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.hero-h1{
+  font-family: 'Figtree', sans-serif;
+  font-size:96px;font-weight:400;color:#fff;
+  line-height:0.95;letter-spacing:-3px;
+  margin-bottom:26px;
+}
+.hero-p{
+  font-family: 'Figtree', sans-serif;
+  font-size:18px;color:rgba(255,255,255,0.75);
+  line-height:1.7;max-width:550px;margin-bottom:36px;
+  font-weight:400;
+}
+.hero-btns{display:flex;gap:12px;align-items:center}
+.btn-lime{
+  font-family: 'Figtree', sans-serif;
+  background:var(--lime);color:#000000;border:none;
+  border-radius:50px;font-size:18px;font-weight:500;
+  width:200px; height:56px;
+  transition:background var(--transition),transform 0.2s;
+}
+.btn-lime:hover{background:var(--lime-hover);transform:scale(1.02)}
+.btn-ghost-white{
+  background:transparent;color:#fff;
+  border:1.5px solid rgba(255, 255, 255, 0.922);
+  border-radius:50px;font-size:18px;font-weight:500;
+  padding:13px 28px;height:56px;
+  transition:background var(--transition);
+}
+.btn-ghost-white:hover{background:rgba(255,255,255,0.08)}
+
+/* ─── PARTNERS (SCROLLING STRIP) ────────────────────────── */
+.partners-section{
+  background:var(--green-dark);
+  padding: 80px 0 64px;
+}
+.partners-head{text-align:center;padding:0 44px 40px;}
+.partners-head h2{
+  font-size:48px;font-weight:400;color:#fff;line-height:1.3;
+  letter-spacing:-0.5px;
+}
+
+.partner-track-outer{
+  overflow:hidden;
+  position:relative;
+}
+.partner-track-outer::before,
+.partner-track-outer::after{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;width:80px;
+  z-index:2;pointer-events:none;
+}
+.partner-track-outer::before{
+  left:0;
+  background:linear-gradient(to right, var(--green-dark) 0%, transparent 100%);
+}
+.partner-track-outer::after{
+  right:0;
+  background:linear-gradient(to left, var(--green-dark) 0%, transparent 100%);
+}
+
+.partner-track{
+  display:flex;
+  gap:12px;
+  padding:0 60px;
+  width:max-content;
+  will-change: transform;
+}
+
+.partner-tile{
+  flex-shrink:0;
+  background:rgba(255,255,255,0.07);
+  border-radius:var(--radius-sm);
+  padding:20px 28px;
+  display:flex;align-items:center;gap:14px;
+  color:rgba(255,255,255,0.9);
+  width:340px;height:88px;
+  font-size:20px;font-weight:600;
+  border:1px solid rgba(255,255,255,0.08);
+  transition:background var(--transition);
+  white-space:nowrap;
+}
+.partner-tile:hover{background:rgba(255,255,255,0.12)}
+.partner-ico{
+  width:32px;height:32px;
+  border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+
+/* ─── FEATURES / SERVICES ──────────────────────────────── */
+/* Image 9: left-aligned lead text, left-aligned service titles */
+.features-section{
+  min-height:100vh;
+  padding:80px 80px;
+  display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;
+  max-width:1280px;margin:0 auto;
+}
+.features-lead{
+  font-size:24px;color:#000000;line-height:1.75;
+  margin-bottom:48px;max-width:480px;font-weight:500;
+  text-align:left;
+}
+.svc-item{cursor:pointer;margin-bottom:0}
+.svc-title{
+  font-size:48px;font-weight:400;color:#b0b0b0;
+  line-height:1.1;margin-bottom:0;letter-spacing:-1px;
+  padding:18px 0;
+  transition:color var(--transition);
+  text-align:left;
+}
+.svc-item.active .svc-title{
+  color:#1a1a1a;
+  border-bottom:1.5px solid #1a1a1a;
+  display:inline-block;padding-bottom:10px;
+}
+.svc-desc{
+  font-size:15px;color:var(--text-muted);line-height:1.8;
+  margin:12px 0 14px;display:none;
+  text-align:left;
+}
+.svc-item.active .svc-desc{display:block}
+.svc-learn{
+  font-size:14px;font-weight:600;color:#1a1a1a;
+  text-decoration:none;display:none;
+}
+.svc-item.active .svc-learn{display:inline}
+.features-right{display:flex;justify-content:flex-end;align-items:center}
+.feat-photo{
+  width:100%;max-width:480px;
+  aspect-ratio:3/4;border-radius:var(--radius-xl);
+  overflow:hidden;position:relative;
+}
+.feat-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  transition:opacity 0.45s ease, transform 0.6s ease;
+  position:absolute;top:0;left:0;
+}
+.feat-photo img.hidden{
+  opacity:0;
+  pointer-events:none;
+}
+.feat-photo img.visible{
+  opacity:1;
+}
+.feat-photo:hover img.visible{transform:scale(1.03)}
+
+
+/* ─── STATS ─────────────────────────────────────────────── */
+/* Image 8: left-aligned heading/text on left, stats stacked on right (left-aligned within column) */
+.stats-bg{background:var(--cream)}
+.stats-outer{max-width:1280px;margin:0 auto}
+.stats-label{
+  display:flex;align-items:center;gap:10px;
+  padding:36px 80px 0;border-bottom:1px solid #ddd8d0;
+}
+.dot-amber{width:8px;height:8px;border-radius:50%;background:#000000;flex-shrink:0}
+.label-txt{font-size:12.5px;color:#121212;font-weight:500}
+.stats-inner{
+  min-height:calc(100vh - 60px);
+  padding:80px 80px;
+  display:grid;grid-template-columns:1fr 1fr;gap:100px;
+}
+.stats-left h2{
+  font-family: 'Figtree', sans-serif;
+  font-size:62px;font-weight:400;line-height:1.15;
+  margin-bottom:24px;max-width:520px;letter-spacing:-1.5px;
+  text-align:left;
+}
+.stats-left p{
+  font-size:18px;color:var(--text-muted);line-height:1.85;max-width:420px;
+  text-align:left;font-weight: 400;letter-spacing: -0.4%;
+}
+/* Stats list: stacked vertically, each stat left-aligned */
+.stats-list{display:flex;flex-direction:column;justify-content:center}
+.stat-row{
+  display:flex;flex-direction:column;align-items:flex-start;
+  padding:32px 0;border-bottom:1px solid #ddd;
+}
+.stat-row:first-child{padding-top:0}
+.stat-row:last-child{border-bottom:none}
+.stat-num{font-size:48px;font-weight:400;letter-spacing:-3px;color:#1a1a1a;line-height:1;}
+.stat-lbl{font-size:18px;color:#999;text-align:left;line-height:1.5;margin-top:6px;letter-spacing: -0.4%;font-weight: 400;}
+
+/* ─── ABOUT ─────────────────────────────────────────────── */
+/* Image 7: centered title (lighter weight ~400), centered paragraph, centered button */
+.about-wrap{
+  background:#fff;position:relative;overflow:hidden;
+  min-height:100vh;
+  display:flex;align-items:center;
+}
+.about-wrap::before{
+  content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(
+    -45deg,transparent,transparent 28px,
+    rgba(0,0,0,0.018) 28px,rgba(0,0,0,0.018) 29px
+  );pointer-events:none;
+}
+.about-inner{
+  padding:80px 80px;
+  max-width:1280px;margin:0 auto;
+  position:relative;z-index:1;
+  width:100%;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.about-text{max-width:720px;}
+.about-inner h2{
+  font-size:62px;font-weight:400;  /* lighter weight matching image 7 */
+  margin-bottom:28px;letter-spacing:-3%;line-height:1.1;
+  text-align:center;
+}
+.about-inner p{
+  font-size:24px;color:#121212;line-height:1.9;margin-bottom:36px;font-weight: 500;
+  text-align:center;letter-spacing: -1%;
+}
+.btn-outline-dark{
+  background:transparent;color:#1a1a1a;
+  border:1.5px solid #1a1a1a;font-family: sans-serif;
+  padding:13px 30px;border-radius:50px;
+  font-size:18px;font-weight:500;height: 56px;
+  transition:background var(--transition),color var(--transition);
+}
+.btn-outline-dark:hover{background:#1a1a1a;color:#fff}
+
+/* ─── TEAM ──────────────────────────────────────────────── */
+/* Image 6: centered heading (lighter weight ~400), centered subtitle, 3-col grid */
+.team-section{
+  min-height:100vh;
+  padding:90px 80px;
+  max-width:1280px;margin:0 auto;
+  display:flex;flex-direction:column;justify-content:center;text-align: center;align-items: center;
+}
+.team-section h2{
+  font-size:62px;font-weight:400;text-align:center;  /* lighter, matching image */
+  margin-bottom:12px;letter-spacing:-3%;
+}
+.team-sub{
+  text-align:center;font-size:18px;color:var(--text-light);
+  margin-bottom:64px;max-width:460px;margin-left:auto;margin-right:auto;
+  line-height:1.6;font-weight:400;
+}
+.team-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:40px 150px;max-width:820px;margin:0 auto;
+}
+.team-card{text-align:center}
+.team-avatar{
+  width:152px;height:152px;background:var(--lime);
+  border-radius:10px;margin:0 auto 18px;
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+
+.inner-avatar img{
+  height: 143px;width: 143px; border-radius: 50%;
+}
+/* .team-avatar .initials{font-size:40px;font-weight:800;color:#0d2b1a;} */
+.team-name{font-size:20px;font-weight:500;color:#1a1a1a;margin-bottom:4px;width: 200px;text-align: center;}
+.team-role{font-size:18px;font-weight: 400; color:#999;line-height:1.4; width: 200px;text-align: center;}
+
+/* ─── TESTIMONIALS ──────────────────────────────────────── */
+/* Image 5: left-aligned label row, left-aligned "What our customers say" heading */
+.t-section{
+  background:var(--green-mid);
+  padding:80px 0;
+  position:relative;overflow:hidden;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.t-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 120%,rgba(197,241,53,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.t-section-inner{
+  max-width:none;
+  padding:0 80px;
+  margin-bottom:40px;
+}
+.t-label-row{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1);
+  padding-bottom:18px;
+}
+.dot-lime{width:8px;height:8px;border-radius:50%;background:var(--lime);flex-shrink:0}
+.t-lbl{font-size:14px;color:rgb(255, 255, 255);font-weight:400;}
+/* heading left-aligned */
+.t-section-inner h2{
+  font-size:62px;font-weight:400;color:#fff;
+  margin-bottom:0;letter-spacing:-3%; font-family: sans-serif;
+  text-align:left;
+}
+
+.t-track-outer{
+  overflow:hidden;
+  position:relative;
+  padding:10px 0;
+}
+.t-track-outer::after{
+  content:'';position:absolute;right:0;top:0;bottom:0;width:120px;
+  background:linear-gradient(to left, var(--green-mid) 0%, transparent 100%);
+  pointer-events:none;z-index:2;
+}
+
+.t-track{
+  display:flex;
+  gap:16px;
+  padding:20px 80px 30px;
+  width:max-content;
+  will-change:transform;
+}
+
+.t-card{
+  flex-shrink:0;
+  background:var(--lime);border-radius:var(--radius-xl);
+  padding:40px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  width:384px; height: 356px;
+  min-height:280px;
+}
+.t-card-quote{
+  font-size:24px;color:#000000;
+  margin-bottom:32px;flex:1;font-weight:500;
+  text-align:left;
+}
+.t-author{display:flex;align-items:center;gap:14px}
+.t-avatar{
+  width:48px;height:48px;border-radius:50%;overflow:hidden;
+  flex-shrink:0;background:#3a7a30;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;color:#fff;
+}
+.t-avatar img{width:100%;height:100%;object-fit:cover}
+.t-name{font-size:20px;font-weight:500;color:#1a1a1a;text-align:left;}
+.t-service{font-size:18px;color:#4a6a40;margin-top:2px;text-align:left; font-weight: 400;}
+.t-divider{
+  height:1px;background:rgba(255,255,255,0.12);
+  margin:0 80px;
+}
+
+/* ─── CTA ───────────────────────────────────────────────── */
+/* Image 4: centered text, decorative thin diagonal lines in corners (not bars) */
+.cta-section{
+  background:#fff;padding:120px 80px;text-align:center;
+  position:relative;overflow:hidden;
+  min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(
+    -45deg,transparent,transparent 28px,
+    rgba(0,0,0,0.018) 28px,rgba(0,0,0,0.018) 29px
+  );pointer-events:none;
+}
+/* Diagonal decorative lines matching image 4 */
+.cta-deco{
+  position:absolute;opacity:0.18;
+  width:60px;height:1.5px;background:#3a7030;
+}
+.cta-deco-tl{top:70px;left:70px;transform:rotate(-45deg)}
+.cta-deco-tr{top:70px;right:70px;transform:rotate(45deg)}
+.cta-deco-bl{bottom:70px;left:70px;transform:rotate(45deg)}
+.cta-deco-br{bottom:70px;right:70px;transform:rotate(-45deg)}
+.cta-section h2{
+  font-size:76px;font-weight:400;  /* matching image 4 - lighter weight */
+  max-width:1000px;margin:0 auto 40px;
+  line-height:1.2;letter-spacing:-3%;
+  position:relative;z-index:1;
+  text-align:center;
+}
+.btn-dark{
+  background:#0d2010;color:#fff;border:none;
+  border-radius:50px;
+  font-size:18px;font-weight:500;letter-spacing: -0.4%;
+  height: 56px; width: 149px;
+  position:relative;z-index:1;
+  transition:background var(--transition),transform 0.2s;
+}
+.btn-dark:hover{background:#1a3020;transform:scale(1.02)}
+
+/* ─── FAQ ACCORDION ─────────────────────────────────────── */
+/* Image 3: left-aligned large heading, left-aligned Q&A items on right */
+.faq-bg{background:var(--cream)}
+.faq-outer{max-width:1280px;margin:0 auto}
+.faq-label{
+  display:flex;align-items:center;gap:10px;
+  padding:36px 80px 0;border-bottom:1px solid #ddd8d0;
+}
+.faq-lbl-line{flex:1;height:1px;background:#ddd8d0}
+.faq-inner{
+  padding:40px 20px;
+  display:grid;grid-template-columns:1fr 1.5fr;gap:150px;
+  min-height:calc(100vh - 60px);
+}
+.faq-left{
+  display:flex;flex-direction:column;
+}
+.faq-left h2{
+  font-size:62px;font-weight:400;line-height:1.1;
+  margin-bottom:22px;letter-spacing:-3%;
+  text-align:left;
+}
+.faq-left p{
+  font-size:14px;color:var(--text-muted);line-height:1.8;margin-bottom:auto;
+  text-align:left;
+}
+.faq-left-bottom{
+  margin-top:auto;
+  padding-top:32px;
+}
+/* FAQ items on right: left-aligned */
+.faq-item{border-bottom:1px solid #ddd;padding:28px 0}
+.faq-item:first-child{border-top:none;padding-top:0;}
+.faq-q{font-size:18px;font-weight:500;margin-bottom:10px;color:#1a1a1a;text-align:left;letter-spacing: -0.4%;}
+.faq-a{font-size:16px;color:var(--text-muted);line-height:1.8;text-align:left;font-weight: 400;letter-spacing: -0.4%;}
+
+/* ─── BLOG ──────────────────────────────────────────────── */
+/* Image 2: left-aligned blog title, left-aligned card titles */
+.blog-section{
+  min-height:100vh;
+  padding:80px 80px;
+  display:grid;grid-template-columns:1fr 1.6fr;gap:100px;align-items:start;
+  max-width:1280px;margin:0 auto;
+}
+.blog-left{
+  display:flex;flex-direction:column;
+  position:sticky;top:120px;
+}
+.blog-left h2{
+  font-size:62px;font-weight:400;margin-bottom:18px;letter-spacing:-3%;line-height:1.1;
+  text-align:left;
+}
+.blog-left p{
+  font-size:18px;color:var(--text-muted);line-height:1.8;margin-bottom:auto;flex:1;font-weight: 400;letter-spacing: -0.4%;
+  text-align:left;
+}
+.blog-left-bottom{
+  margin-top:auto;
+  padding-top:40px;
+}
+.blog-cards{display:flex;flex-direction:column;gap:0}
+.blog-card{
+  display:grid;grid-template-columns:190px 1fr;gap:28px;
+  align-items:center;padding:32px 0;border-bottom:1px solid #eee;
+}
+.blog-card:first-child{padding-top:0;border-top:1px solid #eee}
+.blog-card:last-child{border-bottom:none}
+.blog-thumb{
+  width:177px;height:177px;border-radius:14px;overflow:hidden;
+  flex-shrink:0;background:#ddd;
+}
+.blog-thumb img{width:100%;height:100%;object-fit:cover}
+.blog-title{
+  font-size:24px;font-weight:500;line-height:1.4;margin-bottom:16px;
+  text-align:left;letter-spacing: -1%;
+}
+.blog-meta{display:flex;align-items:center;gap:10px;font-size:14px;color:#888;font-weight: 500;letter-spacing: -0.4%;}
+.meta-dot{width:4px;height:4px;border-radius:50%;background:#bbb}
+.meta-avatar{
+  width:30px;height:30px;border-radius:50%;overflow:hidden;
+  flex-shrink:0;background:#ccc;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;
+}
+.meta-avatar img{width:100%;height:100%;object-fit:cover}
+
+/* ─── FAQ SIMPLE ─────────────────────────────────────────── */
+/* Image 1: centered heading, centered subtitle, left-aligned items with lime top border */
+.faq-simple{
+  min-height:100vh;
+  padding:80px 80px;max-width:760px;margin:0 auto;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.faq-simple h2{
+  font-size:62px;font-weight:400;text-align:center;
+  margin-bottom:10px;letter-spacing:-3%;
+}
+.faq-simple .faq-sub{
+  text-align:center;font-size:18px;color:#888;margin-bottom:52px;font-weight:400;letter-spacing: -0.4%;
+}
+.faq-static{
+  padding:28px 0;
+  border-top:2px solid var(--lime);
+}
+.faq-static h4{
+  font-size:18px;font-weight:500;margin-bottom:12px;
+  text-align:left;color:#1a1a1a;letter-spacing: -0.4%;
+}
+.faq-static p{
+  font-size:16px;color:var(--text-muted);line-height:1.8;
+  text-align:left;letter-spacing: -0.4%;font-weight: 400;
+}
+
+/* ─── NEWSLETTER ─────────────────────────────────────────── */
+.nl-section{
+  display:grid;grid-template-columns:55% 45%;
+  min-height:340px;overflow:hidden;
+}
+.nl-left{
+  background:var(--green-mid);
+  padding:64px 68px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.nl-left h2{
+  font-size:62px;font-weight:400;color:#fff;
+  line-height:1.15;margin-bottom:14px;letter-spacing:-3%;
+  text-align:left;
+}
+.nl-left p{
+  font-size:18px;color:rgba(255,255,255,0.58);line-height:1.8;margin-bottom:30px;max-width:480px;
+  text-align:left;font-weight: 400;letter-spacing: -0.4%;
+}
+.nl-form{display:flex;max-width:500px;border-radius:50px;overflow:hidden; gap: 10px;}
+.nl-form input{
+  flex:1;padding:15px 22px;border:none;
+  background:#fff;color:#1a1a1a;font-size:14px;
+  font-family:'Figtree',sans-serif;outline:none;
+  border-radius: 50px;
+}
+.nl-form input::placeholder{color:#aaa}
+.nl-form button{
+  background:var(--lime);color:#0d2b1a;border:none;
+  padding:15px 26px;font-size:18px;font-weight:500;
+  white-space:nowrap;font-family:'Figtree',sans-serif;border-radius:0 50px 50px 0;
+  transition:background var(--transition);letter-spacing: -0.4%;
+  border-radius: 50px;
+}
+.nl-form button:hover{background:var(--lime-hover)}
+.nl-right{
+  background:var(--cream2);position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  min-height:320px;
+}
+.nl-circle{
+  position:absolute;
+  width:380px;height:380px;border-radius:50%;
+  background:var(--lime);
+  left: -60px;
+  top:50%;
+  transform: translateY(-50%);
+}
+.nl-photo{
+  position:absolute;
+  width:300px;height:300px;border-radius:50%;
+  overflow:hidden;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  border:5px solid var(--cream2);
+  z-index:2;
+}
+.nl-photo img{width:100%;height:100%;object-fit:cover}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer{
+  background:#071a0e;
+  padding:80px 80px 0;
+  position:relative;overflow:hidden;
+}
+footer::before{
+  content:'';position:absolute;
+  bottom:-10px;left:-80px;
+  width:700px;height:350px;
+  border:1.5px solid rgba(197,241,53,0.12);
+  border-radius:50%;pointer-events:none;
+}
+footer::after{
+  content:'';position:absolute;
+  bottom:-80px;left:-160px;
+  width:820px;height:450px;
+  border:1.5px solid rgba(197,241,53,0.06);
+  border-radius:50%;pointer-events:none;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr 1fr 1.4fr;
+  gap:40px;
+  position:relative;z-index:1;
+}
+.footer-brand-desc{
+  font-size:13.5px;color:rgba(255,255,255,0.4);
+  line-height:1.8;margin-top:16px;max-width:240px;
+  text-align:left;
+}
+.footer-logo-row{display:flex;align-items:center;gap:10px}
+.footer-logo-text{color:#fff;font-size:18px;font-weight:700}
+.f-col h5{color:#fff;font-size:16px;font-weight:500;margin-bottom:22px;letter-spacing:0.02em;text-align:left;letter-spacing: -0.4%;}
+.f-col ul{list-style:none}
+.f-col ul li{margin-bottom:14px}
+.f-col ul li a{color:rgba(255,255,255,0.48);font-size:16px;transition:color var(--transition); font-weight: 400; letter-spacing: -0.4%;}
+.f-col ul li a:hover{color:rgba(255,255,255,0.9)}
+.hiring-tag{
+  display:inline-block;background:var(--lime);color:#0d2b1a;
+  font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:4px;
+  margin-left:7px;vertical-align:middle;letter-spacing:0.04em;
+}
+.social-list{display:flex;flex-direction:column;gap:10px}
+.social-pill{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:50px;padding:9px 20px 9px 9px;
+  text-decoration:none;transition:background var(--transition);
+  width:256px; height: 56px;
+}
+.social-pill:hover{background:rgba(255,255,255,0.12)}
+.social-icon{
+  width:36px;height:36px;border-radius:50%;background:var(--lime);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.social-icon svg{width:18px;height:18px}
+.social-pill span{color:rgba(255,255,255,0.78);font-size:13px;font-weight:450}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding:22px 0 28px;
+  display:flex;justify-content:flex-end;
+  margin-top:60px;position:relative;z-index:1;
+}
+.footer-bottom p{font-size:12.5px;color:rgba(255,255,255,0.28)}
+
+/* ─── SCROLL REVEAL ─────────────────────────────────────── */
+.reveal{
+  opacity:0;transform:translateY(30px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="2.8" fill="#0d2b1a"/>
+          <line x1="9" y1="0" x2="9" y2="3.5" stroke="#0d2b1a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="9" y1="14.5" x2="9" y2="18" stroke="#0d2b1a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="0" y1="9" x2="3.5" y2="9" stroke="#0d2b1a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="14.5" y1="9" x2="18" y2="9" stroke="#0d2b1a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="2.5" y1="2.5" x2="5.1" y2="5.1" stroke="#0d2b1a" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="12.9" y1="12.9" x2="15.5" y2="15.5" stroke="#0d2b1a" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="15.5" y1="2.5" x2="12.9" y2="5.1" stroke="#0d2b1a" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="5.1" y1="12.9" x2="2.5" y2="15.5" stroke="#0d2b1a" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Flow</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Team</a></li>
+      <li><a href="#">Solutions</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+  </div>
+  <button class="nav-cta">Get in touch</button>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<div class="hero-wrapper">
+  <section class="hero">
+
+    <div class="hero-card hero-card-dam">
+      <img src="/images/dam.png" alt="Dam aerial view">
+    </div>
+
+    <div class="hero-card hero-card-ev">
+      <img src="/images/ev.png" alt="EV charger">
+    </div>
+
+    <div class="hero-card hero-card-wind">
+      <img src="/images/windmill.png" alt="Wind turbines">
+    </div>
+
+    <div class="hero-card hero-card-solar">
+      <img src="/images/Image (1).png" alt="Solar installer">
+    </div>
+
+    <div class="hero-center">
+      <div class="hero-badge">
+        <div class="hero-badge-icon">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <rect x="1" y="4.5" width="9" height="2" rx="1" fill="#0d2b1a"/>
+            <rect x="4.5" y="1" width="2" height="9" rx="1" fill="#0d2b1a"/>
+          </svg>
+        </div>
+        Powering Tomorrow
+      </div>
+      <h1 class="hero-h1">The Future of<br>Green Energy</h1>
+      <p class="hero-p">Our commitment to green energy is paving the way for a cleaner, healthier planet. Join us on a journey towards a future where clean, renewable energy sources transform the way we power our lives.</p>
+      <div class="hero-btns">
+        <button class="btn-lime">See our solutions</button>
+        <button class="btn-ghost-white">Get in touch</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PARTNERS SCROLLING STRIP ═══ -->
+  <section class="partners-section">
+    <div class="partners-head reveal">
+      <h2>Global partners that<br>trusted us</h2>
+    </div>
+    <div class="partner-track-outer">
+      <div class="partner-track" id="partnerTrack">
+        <div class="partner-tile">
+          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
+          logoipsum<sup style="font-size:9px">®</sup>
+        </div>
+        <div class="partner-tile">
+          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
+          Logoipsum
+        </div>
+        <div class="partner-tile">
+          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
+          logoipsum<sup style="font-size:9px">®</sup>
+        </div>
+        <div class="partner-tile">
+          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
+          Logoipsum
+        </div>
+        <div class="partner-tile">
+          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
+          EnergyFlow<sup style="font-size:9px">™</sup>
+        </div>
+        <div class="partner-tile">
+          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
+          GreenBase
+        </div>
+        <div class="partner-tile">
+          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
+          SolarGrid<sup style="font-size:9px">®</sup>
+        </div>
+        <div class="partner-tile">
+          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
+          WindCore
+        </div>
+        <!-- Clone set for seamless loop -->
+        <div class="partner-tile partner-clone">
+          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
+          logoipsum<sup style="font-size:9px">®</sup>
+        </div>
+        <div class="partner-tile partner-clone">
+          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
+          Logoipsum
+        </div>
+        <div class="partner-tile partner-clone">
+          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
+          logoipsum<sup style="font-size:9px">®</sup>
+        </div>
+        <div class="partner-tile partner-clone">
+          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
+          Logoipsum
+        </div>
+        <div class="partner-tile partner-clone">
+          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
+          EnergyFlow<sup style="font-size:9px">™</sup>
+        </div>
+        <div class="partner-tile partner-clone">
+          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
+          GreenBase
+        </div>
+        <div class="partner-tile partner-clone">
+          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
+          SolarGrid<sup style="font-size:9px">®</sup>
+        </div>
+        <div class="partner-tile partner-clone">
+          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
+          WindCore
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ FEATURES ══════════════════════════════════════════ -->
+<section class="features-section">
+  <div>
+    <p class="features-lead">Our commitment to green energy is paving the way for a cleaner, healthier planet.</p>
+    <div class="svc-item reveal" data-img="/images/ev.png" onclick="setService(this)">
+      <div class="svc-title">EV charging</div>
+      <div class="svc-desc">From public roads to private residences, Flow's EV charging solutions are designed to make electric vehicle ownership convenient and accessible everywhere.</div>
+      <a class="svc-learn" href="#">Learn more</a>
+    </div>
+    <div class="svc-item active reveal reveal-delay-1" data-img="/images/features.png" onclick="setService(this)">
+      <div class="svc-title">Solar Energy</div>
+      <div class="svc-desc">Solar panels convert sunlight into electricity. Photovoltaic (PV) cells on these panels capture the energy from the sun and convert it into electrical power.</div>
+      <a class="svc-learn" href="#">Learn more</a>
+    </div>
+    <div class="svc-item reveal reveal-delay-2" data-img="/images/windmill.png" onclick="setService(this)">
+      <div class="svc-title">Wind Energy</div>
+      <div class="svc-desc">We design and install efficient wind turbine systems that convert wind into clean, affordable electricity for homes and businesses alike.</div>
+      <a class="svc-learn" href="#">Learn more</a>
+    </div>
+    <div class="svc-item reveal reveal-delay-3" data-img="/images/dam.png" onclick="setService(this)">
+      <div class="svc-title">Hydropower</div>
+      <div class="svc-desc">Leverage the constant flow of water to generate reliable, renewable electricity with our hydropower engineering solutions.</div>
+      <a class="svc-learn" href="#">Learn more</a>
+    </div>
+  </div>
+  <div class="features-right reveal">
+    <div class="feat-photo" id="featPhoto">
+      <img src="/images/ev.png"        alt="EV charging"   class="hidden" data-key="/images/ev.png">
+      <img src="/images/features.png"  alt="Solar energy"  class="visible" data-key="/images/features.png">
+      <img src="/images/windmill.png"  alt="Wind energy"   class="hidden" data-key="/images/windmill.png">
+      <img src="/images/dam.png"       alt="Hydropower"    class="hidden" data-key="/images/dam.png">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═════════════════════════════════════════════ -->
+<div class="stats-bg">
+  <div class="stats-outer">
+    <div class="stats-label">
+      <div class="dot-amber"></div>
+      <span class="label-txt">About us</span>
+    </div>
+    <div class="stats-inner">
+      <div class="stats-left reveal">
+        <h2>Committed to a sustainable future</h2>
+        <p>As a pioneering force in the green energy sector, we've been at the forefront of the transition to clean, renewable power sources. Our mission is simple yet profound: to create a world where energy is not only abundant but also environmentally responsible. We believe that by harnessing the power of nature, we can power the world and protect it simultaneously.</p>
+      </div>
+      <div class="stats-list reveal reveal-delay-1">
+        <div class="stat-row">
+          <span class="stat-num">5,000 Mwh</span>
+          <span class="stat-lbl">Renewable Energy Generated</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">2,500+</span>
+          <span class="stat-lbl">Metric Tons of CO2 Reduced</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">10,000+</span>
+          <span class="stat-lbl">Customers Served</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">15%</span>
+          <span class="stat-lbl">Avg. Energy Saved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ════════════════════════════════════════════ -->
+<div class="about-wrap">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <h2>About us</h2>
+      <p>At Flow, we're committed to a sustainable future. As a pioneering force in the green energy sector, we've been at the forefront of the transition to clean, renewable power sources. Our mission is simple yet profound: to create a world where energy is not only abundant but also environmentally responsible. We believe that by harnessing the power of nature, we can power the world and protect it simultaneously.</p>
+      <button class="btn-outline-dark">Read more</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TEAM ══════════════════════════════════════════════ -->
+<section class="team-section">
+  <h2 class="reveal">Meet our experts</h2>
+  <p class="team-sub reveal">Our team boasts top green energy experts, driving innovation in sustainability.</p>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar1.png" alt=""></div> </div>
+      <div class="team-name">Jenny Wilson</div>
+      <div class="team-role">Senior Sustainability Consultant</div>
+    </div>
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar2.png" alt=""></div></div>
+      <div class="team-name">Cameron Williamson</div>
+      <div class="team-role">Senior Sustainability Consultant</div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar3.png" alt=""></div></div>
+      <div class="team-name">Courtney Henry</div>
+      <div class="team-role">Energy Analysts</div>
+    </div>
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar4.png" alt=""></div></div>
+      <div class="team-name">Dianne Russell</div>
+      <div class="team-role">Senior Renewable Energy Engineer</div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar5.png" alt=""></div></div>
+      <div class="team-name">Brooklyn Simmons</div>
+      <div class="team-role">Renewable Energy Engineer</div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar6.png" alt=""></div></div>
+      <div class="team-name">Jerome Bell</div>
+      <div class="team-role">Renewable Energy Engineer</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ══════════════════════════════════════ -->
+<section class="t-section">
+  <div class="t-section-inner">
+    <div class="t-label-row">
+      <div class="dot-lime"></div>
+      <span class="t-lbl">Testimonials</span>
+    </div>
+    <h2 class="reveal">What our customers say</h2>
+  </div>
+
+  <div class="t-track-outer">
+    <div class="t-track" id="testimonialTrack">
+      <div class="t-card reveal">
+        <p class="t-card-quote">"Flow transformed my energy use. Efficient, green tech, outstanding service! The transition was seamless and our bills dropped significantly."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#5a8a40">J</div>
+          <div><div class="t-name">Jenny Wilson</div><div class="t-service">Solar energy service</div></div>
+        </div>
+      </div>
+      <div class="t-card reveal reveal-delay-1">
+        <p class="t-card-quote">"Flow redefined my energy game – green, efficient, and top-notch service! I couldn't be happier with the EV charging solution at home."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#3a7030"><img src="/images/tcard3.png" alt=""></div>
+          <div><div class="t-name">Dianne Russell</div><div class="t-service">EV service</div></div>
+        </div>
+      </div>
+      <div class="t-card reveal reveal-delay-2">
+        <p class="t-card-quote">“Thanks to Flow, my energy is now solar-powered – sustainable, efficient, and exceptional service.” </p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#4a7838"><img src="/images/tcard3.png" alt=""></div>
+          <div><div class="t-name">Cody Fisher</div><div class="t-service">Solar energy service</div></div>
+        </div>
+      </div>
+      <div class="t-card reveal reveal-delay-3">
+        <p class="t-card-quote">"Switching to Flow was the best decision – sustainable energy with world-class ongoing support. Their team guided us every step of the way."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#527a40"><img src="/images/tcard1.png" alt=""></div>
+          <div><div class="t-name">Mia Torres</div><div class="t-service">EV Charging User</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-card-quote">"The installation was quick and professional. Within a month we were generating more power than we consume. Flow exceeded our expectations."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#3d6a30"><img src="/images/tcard2.png" alt=""></div>
+          <div><div class="t-name">Robert Chen</div><div class="t-service">Wind energy service</div></div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-card-quote">"Flow's hydropower solution for our farm was a game-changer. Clean, reliable, and their support team is always just a call away."</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#4a7830"><img src="/images/tcard1.png" alt=""></div>
+          <div><div class="t-name">Sarah Mitchell</div><div class="t-service">Hydropower service</div></div>
+        </div>
+      </div>
+      <!-- Clone for loop -->
+      <div class="t-card t-clone">
+        <p class="t-card-quote">"Flow transformed my energy use. Efficient, green tech, outstanding service!”</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#5a8a40"><img src="/images/tcard1.png" alt=""></div>
+          <div><div class="t-name">Jenny Wilson</div><div class="t-service">Solar energy service</div></div>
+        </div>
+      </div>
+      <div class="t-card t-clone">
+        <p class="t-card-quote">“Flow redefined my energy game – green, efficient, and top-notch service!”</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#3a7030"><img src="/images/tcard2.png" alt=""></div>
+          <div><div class="t-name">Dianne Russell</div><div class="t-service">EV service</div></div>
+        </div>
+      </div>
+      <div class="t-card t-clone">
+        <p class="t-card-quote">“Thanks to Flow, my energy is now solar-powered – sustainable, efficient, and exceptional service.”</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:#4a7838"><img src="/images/tcard3.png" alt=""></div>
+          <div><div class="t-name">Cody Fisher</div><div class="t-service">Solar energy service</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="t-divider"></div>
+</section>
+
+<!-- ═══ CTA ═══════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-deco cta-deco-tl"></div>
+  <div class="cta-deco cta-deco-tr"></div>
+  <div class="cta-deco cta-deco-bl"></div>
+  <div class="cta-deco cta-deco-br"></div>
+  <h2 class="reveal">Our commitment to green energy is paving the way for a cleaner, healthier planet.</h2>
+  <button class="btn-dark reveal">Get in touch</button>
+</section>
+
+<!-- ═══ FAQ ACCORDION ═════════════════════════════════════ -->
+<div class="faq-bg">
+  <div class="faq-outer">
+    <div class="faq-label">
+      <div class="dot-amber"></div>
+      <span class="label-txt">FAQ</span>
+      <div class="faq-lbl-line"></div>
+    </div>
+    <div class="faq-inner">
+      <div class="faq-left reveal">
+        <h2>Answers to the frequently asked questions.</h2>
+        <!-- <p>Flow is committed to a sustainable future. We stand at the forefront of the transition to clean, renewable power sources.</p> -->
+        <div class="faq-left-bottom">
+          <button class="btn-outline-dark" style="border-radius:50px">Contact us &nbsp;→</button>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="faq-item">
+          <div class="faq-q">What is green energy?</div>
+          <div class="faq-a">Green energy, also known as renewable energy, is derived from natural sources that are replenished on a human timescale. This includes solar, wind, hydro, geothermal, and biomass energy, among others.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How does green energy benefit the environment?</div>
+          <div class="faq-a">Green energy reduces the reliance on fossil fuels, lowering greenhouse gas emissions and mitigating climate change. It also helps conserve natural resources and promotes a cleaner, sustainable future.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What green energy solutions does your company offer?</div>
+          <div class="faq-a">We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What support services do you offer after installing green energy solutions?</div>
+          <div class="faq-a">We offer ongoing maintenance, monitoring, and support services to ensure the optimal performance and longevity of your green energy system. Our team is ready to assist with any issues that may arise.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do solar panels work?</div>
+          <div class="faq-a">Solar panels convert sunlight into electricity through photovoltaic cells. These cells generate direct current (DC), which is then converted into usable alternating current (AC) for household or commercial use.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BLOG ══════════════════════════════════════════════ -->
+<section class="blog-section">
+  <div class="blog-left">
+    <!-- <p style="font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:#888;margin-bottom:14px">• Blog</p> -->
+    <h2>Learn more from our blog</h2>
+    <p>Our team boasts top green energy experts, driving innovation in sustainability.</p>
+    <div class="blog-left-bottom">
+      <button class="btn-outline-dark">See all</button>
+    </div>
+  </div>
+  <div class="blog-cards">
+    <div class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#607888 0%,#b0c8d8 100%)">
+        <img src="/images/blog1.png" alt="">
+      </div>
+      <div>
+        <div class="blog-title">Wind Power: A Breath of Fresh Air for Clean Energy Enthusiasts</div>
+        <div class="blog-meta">
+          <div class="meta-avatar" style="background:#8ab0c0">W</div>
+          Wade Warren
+          <div class="meta-dot"></div>
+          7 min read
+        </div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#2a1a0a 0%,#503020 100%)">
+        <img src="/images/blog2.png" alt="">
+      </div>
+      <div>
+        <div class="blog-title">From Trash to Treasure: The Promising World of Biomass Energy</div>
+        <div class="blog-meta">
+          <div class="meta-avatar" style="background:#c08070">J</div>
+          Jenny Wilson
+          <div class="meta-dot"></div>
+          12 min read
+        </div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#1a5a4a 0%,#0a3020 100%)">
+        <img src="/images/blog3.png" alt="">
+      </div>
+      <div>
+        <div class="blog-title">Hydrogen: Fueling the Green Energy Revolution</div>
+        <div class="blog-meta">
+          <div class="meta-avatar" style="background:#9090b8">L</div>
+          Leslie Alexander
+          <div class="meta-dot"></div>
+          5 min read
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ SIMPLE ════════════════════════════════════════ -->
+<section class="faq-simple">
+  <h2 class="reveal">FAQ</h2>
+  <p class="faq-sub reveal">Here you will find the answers to the frequently asked questions.</p>
+  <div class="faq-static reveal">
+    <h4>What is green energy?</h4>
+    <p>Green energy, also known as renewable energy, is derived from natural sources that are replenished on a human timescale. This includes solar, wind, hydro, geothermal, and biomass energy, among others.</p>
+  </div>
+  <div class="faq-static reveal reveal-delay-1">
+    <h4>How does green energy benefit the environment?</h4>
+    <p>Green energy reduces the reliance on fossil fuels, lowering greenhouse gas emissions and mitigating climate change. It also helps conserve natural resources and promotes a cleaner, sustainable future.</p>
+  </div>
+  <div class="faq-static reveal reveal-delay-2">
+    <h4>What green energy solutions does your company offer?</h4>
+    <p>We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.</p>
+  </div>
+  <div class="faq-static reveal reveal-delay-3">
+    <h4>What support services do you offer after installing green energy solutions?</h4>
+    <p>We offer ongoing maintenance, monitoring, and support services to ensure the optimal performance and longevity of your green energy system. Our team is ready to assist with any issues that may arise.</p>
+  </div>
+  <div class="faq-static reveal reveal-delay-4">
+    <h4>How do solar panels work?</h4>
+    <p>Solar panels convert sunlight into electricity through photovoltaic cells. These cells generate direct current (DC), which is then converted into usable alternating current (AC) for household or commercial use.</p>
+  </div>
+</section>
+
+<!-- ═══ NEWSLETTER ════════════════════════════════════════ -->
+<section class="nl-section">
+  <div class="nl-left">
+    <h2 class="reveal">Your Source for Green Energy Updates</h2>
+    <p class="reveal">Stay in the loop with our Green Horizon newsletter, where we deliver bite-sized insights into the latest green energy solutions.</p>
+    <div class="nl-form reveal">
+      <input type="email" placeholder="Your e-mail..."/>
+      <button>Get in touch</button>
+    </div>
+  </div>
+  <div class="nl-right">
+    <div class="nl-circle"></div>
+    <div class="nl-photo">
+      <img src="/images/windmill.png" alt="Wind energy"/>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-row">
+        <div class="nav-logo-icon" style="width:34px;height:34px">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="9" r="2.8" fill="#0d2b1a"/>
+            <line x1="9" y1="0" x2="9" y2="3.5" stroke="#0d2b1a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="9" y1="14.5" x2="9" y2="18" stroke="#0d2b1a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="9" x2="3.5" y2="9" stroke="#0d2b1a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="14.5" y1="9" x2="18" y2="9" stroke="#0d2b1a" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="footer-logo-text">Flow</span>
+      </div>
+      <p class="footer-brand-desc">Your reliable partner for clean, sustainable energy solutions. Powering a greener tomorrow for everyone.</p>
+    </div>
+    <div class="f-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="#">Solutions</a></li>
+        <li><a href="#">How it works</a></li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Our Mission</a></li>
+        <li><a href="#">Careers <span class="hiring-tag">HIRING</span></a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+    <div class="social-list">
+      <a class="social-pill" href="#">
+        <div class="social-icon">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm3.45 4.5H10.9c-.18 0-.4.2-.4.48v1.02h2l-.26 2H10.5V16H8.5v-6H7V8h1.5V6.97C8.5 5.37 9.52 4.5 10.98 4.5h1.47v2z" fill="#0d2b1a"/></svg>
+        </div>
+        <span>Follow us on Facebook</span>
+      </a>
+      <a class="social-pill" href="#">
+        <div class="social-icon">
+          <svg viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="3.5" stroke="#0d2b1a" stroke-width="1.6" fill="none"/><circle cx="9" cy="9" r="2.5" stroke="#0d2b1a" stroke-width="1.6" fill="none"/><circle cx="12.5" cy="5.5" r="0.8" fill="#0d2b1a"/></svg>
+        </div>
+        <span>Follow us on Instagram</span>
+      </a>
+      <a class="social-pill" href="#">
+        <div class="social-icon">
+          <svg viewBox="0 0 18 18" fill="none"><path d="M5 4H2v10h3V4zm-1.5-.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm10.5.5h-2.5C10.12 4 9 5.12 9 6.5V4H6v10h3V9.5A1.5 1.5 0 0110.5 8h.5a1.5 1.5 0 011.5 1.5V14H15V8.5C15 6.01 12.99 4 10.5 4z" fill="#0d2b1a"/></svg>
+        </div>
+        <span>Follow us on LinkedIn</span>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Flow. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// ─── Service toggle with image swap ─────────────────────
+function setService(el) {
+  el.parentElement.querySelectorAll('.svc-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+
+  const imgKey = el.dataset.img;
+  if (imgKey) {
+    const featPhoto = document.getElementById('featPhoto');
+    if (featPhoto) {
+      featPhoto.querySelectorAll('img').forEach(img => {
+        if (img.dataset.key === imgKey) {
+          img.classList.remove('hidden');
+          img.classList.add('visible');
+        } else {
+          img.classList.remove('visible');
+          img.classList.add('hidden');
+        }
+      });
+    }
+  }
+}
+
+// ─── Scroll reveal ───────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── GSAP Animations ────────────────────────────────────
+gsap.registerPlugin(ScrollTrigger);
+
+// Partner strip infinite scroll
+(function() {
+  const track = document.getElementById('partnerTrack');
+  if (!track) return;
+
+  const tiles = track.querySelectorAll('.partner-tile:not(.partner-clone)');
+  let setWidth = 0;
+  tiles.forEach(t => {
+    setWidth += t.offsetWidth + 12;
+  });
+
+  gsap.set(track, { x: -80 });
+
+  const tween = gsap.to(track, {
+    x: () => -(setWidth + 80),
+    duration: 35,
+    ease: 'none',
+    repeat: -1,
+    modifiers: {
+      x: gsap.utils.unitize(x => {
+        const val = parseFloat(x);
+        if (val <= -(setWidth + 80)) return -80;
+        return val;
+      })
+    }
+  });
+
+  track.parentElement.addEventListener('mouseenter', () => tween.pause());
+  track.parentElement.addEventListener('mouseleave', () => tween.play());
+})();
+
+// Testimonial strip infinite scroll
+(function() {
+  const track = document.getElementById('testimonialTrack');
+  if (!track) return;
+
+  const cards = track.querySelectorAll('.t-card:not(.t-clone)');
+  let setWidth = 0;
+  cards.forEach(c => {
+    setWidth += c.offsetWidth + 16;
+  });
+
+  gsap.set(track, { x: -80 });
+
+  const tween = gsap.to(track, {
+    x: () => -(setWidth + 80),
+    duration: 30,
+    ease: 'none',
+    repeat: -1,
+    modifiers: {
+      x: gsap.utils.unitize(x => {
+        const val = parseFloat(x);
+        if (val <= -(setWidth + 80)) return -80;
+        return val;
+      })
+    }
+  });
+
+  track.parentElement.addEventListener('mouseenter', () => tween.pause());
+  track.parentElement.addEventListener('mouseleave', () => tween.play());
+})();
+</script>
+</body>
+</html>
