@@ -62,7 +62,7 @@ button{cursor:pointer;font-family:inherit;border:none;outline:none}
 .nav-cta{
   background:transparent;border:1.5px solid rgb(255, 255, 255);
   color:#fff;padding:10px 24px;border-radius:50px;
-  font-size:14px;font-weight:500;width: 129px;height: 48px;;
+  font-size:16px;font-weight:500;width: 129px;height: 48px;;
   transition:background var(--transition),border-color var(--transition);
 }
 .nav-cta:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.6)}
