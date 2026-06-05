@@ -8,8 +8,8 @@ button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;outline:none}
 
 /* ─── CSS VARIABLES ─────────────────────────────────────── */
 :root{
-  --green-dark:#061610;--green-mid:#0a2a18;--green-deep:#040e09;
-  --lime:#c5f135;--lime-hover:#d4f94a;
+  --green-dark:rgb(5, 44, 35);--green-mid:rgb(33, 68, 56);--green-deep:rgb(5, 44, 35);
+  --lime:rgb(180, 255, 80);--lime-hover:#d4f94a;
   --cream:#faf5ee;--cream2:#f5ede0;
   --text:#1a1a1a;--text-muted:#666;--text-light:#888;
   --border:#e5e5e5;
@@ -42,7 +42,7 @@ button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;outline:none}
 .nav-cta:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.6)}
 
 /* ─── HERO ──────────────────────────────────────────────── */
-.hero-wrapper{background:var(--green-dark);overflow:hidden}
+.hero-wrapper{background:rgb(5, 44, 35);overflow:hidden}
 .hero{
   position:relative;min-height:1000px;
   display:flex;align-items:flex-start;justify-content:center;
