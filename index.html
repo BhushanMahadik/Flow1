@@ -8,12 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
-<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
 </head>
 <body>
+
 <!-- ═══ NAVBAR ═══════════════════════════════════════════ -->
 <nav class="navbar">
   <div class="nav-left">
@@ -46,23 +45,19 @@
 <!-- ═══ HERO ══════════════════════════════════════════════ -->
 <div class="hero-wrapper">
   <section class="hero">
-
     <div class="hero-card hero-card-dam">
       <img src="/images/dam.png" alt="Dam aerial view">
     </div>
-
     <div class="hero-card hero-card-ev">
       <img src="/images/ev.png" alt="EV charger">
     </div>
-
     <div class="hero-card hero-card-wind">
       <img src="/images/windmill.png" alt="Wind turbines">
     </div>
-
+    <!-- Solar card with vanishing fade effect -->
     <div class="hero-card hero-card-solar">
       <img src="/images/Image (1).png" alt="Solar installer">
     </div>
-
     <div class="hero-center">
       <div class="hero-badge">
         <div class="hero-badge-icon">
@@ -89,71 +84,23 @@
     </div>
     <div class="partner-track-outer">
       <div class="partner-track" id="partnerTrack">
-        <div class="partner-tile">
-          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
-          logoipsum<sup style="font-size:9px">®</sup>
-        </div>
-        <div class="partner-tile">
-          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
-          Logoipsum
-        </div>
-        <div class="partner-tile">
-          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
-          logoipsum<sup style="font-size:9px">®</sup>
-        </div>
-        <div class="partner-tile">
-          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
-          Logoipsum
-        </div>
-        <div class="partner-tile">
-          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
-          EnergyFlow<sup style="font-size:9px">™</sup>
-        </div>
-        <div class="partner-tile">
-          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
-          GreenBase
-        </div>
-        <div class="partner-tile">
-          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
-          SolarGrid<sup style="font-size:9px">®</sup>
-        </div>
-        <div class="partner-tile">
-          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
-          WindCore
-        </div>
-        <!-- Clone set for seamless loop -->
-        <div class="partner-tile partner-clone">
-          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
-          logoipsum<sup style="font-size:9px">®</sup>
-        </div>
-        <div class="partner-tile partner-clone">
-          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
-          Logoipsum
-        </div>
-        <div class="partner-tile partner-clone">
-          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
-          logoipsum<sup style="font-size:9px">®</sup>
-        </div>
-        <div class="partner-tile partner-clone">
-          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
-          Logoipsum
-        </div>
-        <div class="partner-tile partner-clone">
-          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
-          EnergyFlow<sup style="font-size:9px">™</sup>
-        </div>
-        <div class="partner-tile partner-clone">
-          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
-          GreenBase
-        </div>
-        <div class="partner-tile partner-clone">
-          <div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>
-          SolarGrid<sup style="font-size:9px">®</sup>
-        </div>
-        <div class="partner-tile partner-clone">
-          <div class="partner-ico"><img src="/images/Vector.png" alt=""></div>
-          WindCore
-        </div>
+        <div class="partner-tile"><div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>logoipsum<sup style="font-size:9px">®</sup></div>
+        <div class="partner-tile"><div class="partner-ico"><img src="/images/Vector.png" alt=""></div>Logoipsum</div>
+        <div class="partner-tile"><div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>logoipsum<sup style="font-size:9px">®</sup></div>
+        <div class="partner-tile"><div class="partner-ico"><img src="/images/Vector.png" alt=""></div>Logoipsum</div>
+        <div class="partner-tile"><div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>EnergyFlow<sup style="font-size:9px">™</sup></div>
+        <div class="partner-tile"><div class="partner-ico"><img src="/images/Vector.png" alt=""></div>GreenBase</div>
+        <div class="partner-tile"><div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>SolarGrid<sup style="font-size:9px">®</sup></div>
+        <div class="partner-tile"><div class="partner-ico"><img src="/images/Vector.png" alt=""></div>WindCore</div>
+        <!-- Clones -->
+        <div class="partner-tile partner-clone"><div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>logoipsum<sup style="font-size:9px">®</sup></div>
+        <div class="partner-tile partner-clone"><div class="partner-ico"><img src="/images/Vector.png" alt=""></div>Logoipsum</div>
+        <div class="partner-tile partner-clone"><div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>logoipsum<sup style="font-size:9px">®</sup></div>
+        <div class="partner-tile partner-clone"><div class="partner-ico"><img src="/images/Vector.png" alt=""></div>Logoipsum</div>
+        <div class="partner-tile partner-clone"><div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>EnergyFlow<sup style="font-size:9px">™</sup></div>
+        <div class="partner-tile partner-clone"><div class="partner-ico"><img src="/images/Vector.png" alt=""></div>GreenBase</div>
+        <div class="partner-tile partner-clone"><div class="partner-ico"><img src="/images/Vector (1).png" alt=""></div>SolarGrid<sup style="font-size:9px">®</sup></div>
+        <div class="partner-tile partner-clone"><div class="partner-ico"><img src="/images/Vector.png" alt=""></div>WindCore</div>
       </div>
     </div>
   </section>
@@ -207,22 +154,10 @@
         <p>As a pioneering force in the green energy sector, we've been at the forefront of the transition to clean, renewable power sources. Our mission is simple yet profound: to create a world where energy is not only abundant but also environmentally responsible. We believe that by harnessing the power of nature, we can power the world and protect it simultaneously.</p>
       </div>
       <div class="stats-list reveal reveal-delay-1">
-        <div class="stat-row">
-          <span class="stat-num">5,000 Mwh</span>
-          <span class="stat-lbl">Renewable Energy Generated</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-num">2,500+</span>
-          <span class="stat-lbl">Metric Tons of CO2 Reduced</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-num">10,000+</span>
-          <span class="stat-lbl">Customers Served</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-num">15%</span>
-          <span class="stat-lbl">Avg. Energy Saved</span>
-        </div>
+        <div class="stat-row"><span class="stat-num">5,000 Mwh</span><span class="stat-lbl">Renewable Energy Generated</span></div>
+        <div class="stat-row"><span class="stat-num">2,500+</span><span class="stat-lbl">Metric Tons of CO2 Reduced</span></div>
+        <div class="stat-row"><span class="stat-num">10,000+</span><span class="stat-lbl">Customers Served</span></div>
+        <div class="stat-row"><span class="stat-num">15%</span><span class="stat-lbl">Avg. Energy Saved</span></div>
       </div>
     </div>
   </div>
@@ -244,36 +179,12 @@
   <h2 class="reveal">Meet our experts</h2>
   <p class="team-sub reveal">Our team boasts top green energy experts, driving innovation in sustainability.</p>
   <div class="team-grid">
-    <div class="team-card reveal">
-      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar1.png" alt=""></div> </div>
-      <div class="team-name">Jenny Wilson</div>
-      <div class="team-role">Senior Sustainability Consultant</div>
-    </div>
-    <div class="team-card reveal reveal-delay-1">
-      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar2.png" alt=""></div></div>
-      <div class="team-name">Cameron Williamson</div>
-      <div class="team-role">Senior Sustainability Consultant</div>
-    </div>
-    <div class="team-card reveal reveal-delay-2">
-      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar3.png" alt=""></div></div>
-      <div class="team-name">Courtney Henry</div>
-      <div class="team-role">Energy Analysts</div>
-    </div>
-    <div class="team-card reveal reveal-delay-1">
-      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar4.png" alt=""></div></div>
-      <div class="team-name">Dianne Russell</div>
-      <div class="team-role">Senior Renewable Energy Engineer</div>
-    </div>
-    <div class="team-card reveal reveal-delay-2">
-      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar5.png" alt=""></div></div>
-      <div class="team-name">Brooklyn Simmons</div>
-      <div class="team-role">Renewable Energy Engineer</div>
-    </div>
-    <div class="team-card reveal reveal-delay-3">
-      <div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar6.png" alt=""></div></div>
-      <div class="team-name">Jerome Bell</div>
-      <div class="team-role">Renewable Energy Engineer</div>
-    </div>
+    <div class="team-card reveal"><div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar1.png" alt=""></div></div><div class="team-name">Jenny Wilson</div><div class="team-role">Senior Sustainability Consultant</div></div>
+    <div class="team-card reveal reveal-delay-1"><div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar2.png" alt=""></div></div><div class="team-name">Cameron Williamson</div><div class="team-role">Senior Sustainability Consultant</div></div>
+    <div class="team-card reveal reveal-delay-2"><div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar3.png" alt=""></div></div><div class="team-name">Courtney Henry</div><div class="team-role">Energy Analysts</div></div>
+    <div class="team-card reveal reveal-delay-1"><div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar4.png" alt=""></div></div><div class="team-name">Dianne Russell</div><div class="team-role">Senior Renewable Energy Engineer</div></div>
+    <div class="team-card reveal reveal-delay-2"><div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar5.png" alt=""></div></div><div class="team-name">Brooklyn Simmons</div><div class="team-role">Renewable Energy Engineer</div></div>
+    <div class="team-card reveal reveal-delay-3"><div class="team-avatar"><div class="inner-avatar"><img src="/images/avatar6.png" alt=""></div></div><div class="team-name">Jerome Bell</div><div class="team-role">Renewable Energy Engineer</div></div>
   </div>
 </section>
 
@@ -287,6 +198,7 @@
     <h2 class="reveal">What our customers say</h2>
   </div>
 
+  <!-- First card aligns under the "W" of "What" — track padding-left = 64px matches section padding -->
   <div class="t-track-outer">
     <div class="t-track" id="testimonialTrack">
       <div class="t-card reveal">
@@ -304,7 +216,7 @@
         </div>
       </div>
       <div class="t-card reveal reveal-delay-2">
-        <p class="t-card-quote">“Thanks to Flow, my energy is now solar-powered – sustainable, efficient, and exceptional service.” </p>
+        <p class="t-card-quote">"Thanks to Flow, my energy is now solar-powered – sustainable, efficient, and exceptional service."</p>
         <div class="t-author">
           <div class="t-avatar" style="background:#4a7838"><img src="/images/tcard3.png" alt=""></div>
           <div><div class="t-name">Cody Fisher</div><div class="t-service">Solar energy service</div></div>
@@ -331,30 +243,16 @@
           <div><div class="t-name">Sarah Mitchell</div><div class="t-service">Hydropower service</div></div>
         </div>
       </div>
-      <!-- Clone for loop -->
-      <div class="t-card t-clone">
-        <p class="t-card-quote">"Flow transformed my energy use. Efficient, green tech, outstanding service!”</p>
-        <div class="t-author">
-          <div class="t-avatar" style="background:#5a8a40"><img src="/images/tcard1.png" alt=""></div>
-          <div><div class="t-name">Jenny Wilson</div><div class="t-service">Solar energy service</div></div>
-        </div>
-      </div>
-      <div class="t-card t-clone">
-        <p class="t-card-quote">“Flow redefined my energy game – green, efficient, and top-notch service!”</p>
-        <div class="t-author">
-          <div class="t-avatar" style="background:#3a7030"><img src="/images/tcard2.png" alt=""></div>
-          <div><div class="t-name">Dianne Russell</div><div class="t-service">EV service</div></div>
-        </div>
-      </div>
-      <div class="t-card t-clone">
-        <p class="t-card-quote">“Thanks to Flow, my energy is now solar-powered – sustainable, efficient, and exceptional service.”</p>
-        <div class="t-author">
-          <div class="t-avatar" style="background:#4a7838"><img src="/images/tcard3.png" alt=""></div>
-          <div><div class="t-name">Cody Fisher</div><div class="t-service">Solar energy service</div></div>
-        </div>
-      </div>
+      <!-- Clones for loop -->
+      <div class="t-card t-clone"><p class="t-card-quote">"Flow transformed my energy use. Efficient, green tech, outstanding service!"</p><div class="t-author"><div class="t-avatar" style="background:#5a8a40"><img src="/images/tcard1.png" alt=""></div><div><div class="t-name">Jenny Wilson</div><div class="t-service">Solar energy service</div></div></div></div>
+      <div class="t-card t-clone"><p class="t-card-quote">"Flow redefined my energy game – green, efficient, and top-notch service!"</p><div class="t-author"><div class="t-avatar" style="background:#3a7030"><img src="/images/tcard2.png" alt=""></div><div><div class="t-name">Dianne Russell</div><div class="t-service">EV service</div></div></div></div>
+      <div class="t-card t-clone"><p class="t-card-quote">"Thanks to Flow, my energy is now solar-powered – sustainable, efficient, and exceptional service."</p><div class="t-author"><div class="t-avatar" style="background:#4a7838"><img src="/images/tcard3.png" alt=""></div><div><div class="t-name">Cody Fisher</div><div class="t-service">Solar energy service</div></div></div></div>
     </div>
   </div>
+
+  <!-- WORKING PROGRESS BAR -->
+  <div class="t-progress" id="tProgress"></div>
+
   <div class="t-divider"></div>
 </section>
 
@@ -379,32 +277,16 @@
     <div class="faq-inner">
       <div class="faq-left reveal">
         <h2>Answers to the frequently asked questions.</h2>
-        <!-- <p>Flow is committed to a sustainable future. We stand at the forefront of the transition to clean, renewable power sources.</p> -->
         <div class="faq-left-bottom">
           <button class="btn-outline-dark" style="border-radius:50px">Contact us &nbsp;→</button>
         </div>
       </div>
       <div class="reveal reveal-delay-1">
-        <div class="faq-item">
-          <div class="faq-q">What is green energy?</div>
-          <div class="faq-a">Green energy, also known as renewable energy, is derived from natural sources that are replenished on a human timescale. This includes solar, wind, hydro, geothermal, and biomass energy, among others.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How does green energy benefit the environment?</div>
-          <div class="faq-a">Green energy reduces the reliance on fossil fuels, lowering greenhouse gas emissions and mitigating climate change. It also helps conserve natural resources and promotes a cleaner, sustainable future.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">What green energy solutions does your company offer?</div>
-          <div class="faq-a">We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">What support services do you offer after installing green energy solutions?</div>
-          <div class="faq-a">We offer ongoing maintenance, monitoring, and support services to ensure the optimal performance and longevity of your green energy system. Our team is ready to assist with any issues that may arise.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How do solar panels work?</div>
-          <div class="faq-a">Solar panels convert sunlight into electricity through photovoltaic cells. These cells generate direct current (DC), which is then converted into usable alternating current (AC) for household or commercial use.</div>
-        </div>
+        <div class="faq-item"><div class="faq-q">What is green energy?</div><div class="faq-a">Green energy, also known as renewable energy, is derived from natural sources that are replenished on a human timescale. This includes solar, wind, hydro, geothermal, and biomass energy, among others.</div></div>
+        <div class="faq-item"><div class="faq-q">How does green energy benefit the environment?</div><div class="faq-a">Green energy reduces the reliance on fossil fuels, lowering greenhouse gas emissions and mitigating climate change. It also helps conserve natural resources and promotes a cleaner, sustainable future.</div></div>
+        <div class="faq-item"><div class="faq-q">What green energy solutions does your company offer?</div><div class="faq-a">We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.</div></div>
+        <div class="faq-item"><div class="faq-q">What support services do you offer after installing green energy solutions?</div><div class="faq-a">We offer ongoing maintenance, monitoring, and support services to ensure the optimal performance and longevity of your green energy system. Our team is ready to assist with any issues that may arise.</div></div>
+        <div class="faq-item"><div class="faq-q">How do solar panels work?</div><div class="faq-a">Solar panels convert sunlight into electricity through photovoltaic cells. These cells generate direct current (DC), which is then converted into usable alternating current (AC) for household or commercial use.</div></div>
       </div>
     </div>
   </div>
@@ -413,55 +295,25 @@
 <!-- ═══ BLOG ══════════════════════════════════════════════ -->
 <section class="blog-section">
   <div class="blog-left">
-    <!-- <p style="font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:#888;margin-bottom:14px">• Blog</p> -->
     <h2>Learn more from our blog</h2>
     <p>Our team boasts top green energy experts, driving innovation in sustainability.</p>
+    <!-- CTA pushed to bottom via flex + margin-top:auto -->
     <div class="blog-left-bottom">
       <button class="btn-outline-dark">See all</button>
     </div>
   </div>
   <div class="blog-cards">
     <div class="blog-card">
-      <div class="blog-thumb" style="background:linear-gradient(135deg,#607888 0%,#b0c8d8 100%)">
-        <img src="/images/blog1.png" alt="">
-      </div>
-      <div>
-        <div class="blog-title">Wind Power: A Breath of Fresh Air for Clean Energy Enthusiasts</div>
-        <div class="blog-meta">
-          <div class="meta-avatar" style="background:#8ab0c0">W</div>
-          Wade Warren
-          <div class="meta-dot"></div>
-          7 min read
-        </div>
-      </div>
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#607888 0%,#b0c8d8 100%)"><img src="/images/blog1.png" alt=""></div>
+      <div><div class="blog-title">Wind Power: A Breath of Fresh Air for Clean Energy Enthusiasts</div><div class="blog-meta"><div class="meta-avatar" style="background:#8ab0c0">W</div>Wade Warren<div class="meta-dot"></div>7 min read</div></div>
     </div>
     <div class="blog-card">
-      <div class="blog-thumb" style="background:linear-gradient(135deg,#2a1a0a 0%,#503020 100%)">
-        <img src="/images/blog2.png" alt="">
-      </div>
-      <div>
-        <div class="blog-title">From Trash to Treasure: The Promising World of Biomass Energy</div>
-        <div class="blog-meta">
-          <div class="meta-avatar" style="background:#c08070">J</div>
-          Jenny Wilson
-          <div class="meta-dot"></div>
-          12 min read
-        </div>
-      </div>
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#2a1a0a 0%,#503020 100%)"><img src="/images/blog2.png" alt=""></div>
+      <div><div class="blog-title">From Trash to Treasure: The Promising World of Biomass Energy</div><div class="blog-meta"><div class="meta-avatar" style="background:#c08070">J</div>Jenny Wilson<div class="meta-dot"></div>12 min read</div></div>
     </div>
     <div class="blog-card">
-      <div class="blog-thumb" style="background:linear-gradient(135deg,#1a5a4a 0%,#0a3020 100%)">
-        <img src="/images/blog3.png" alt="">
-      </div>
-      <div>
-        <div class="blog-title">Hydrogen: Fueling the Green Energy Revolution</div>
-        <div class="blog-meta">
-          <div class="meta-avatar" style="background:#9090b8">L</div>
-          Leslie Alexander
-          <div class="meta-dot"></div>
-          5 min read
-        </div>
-      </div>
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#1a5a4a 0%,#0a3020 100%)"><img src="/images/blog3.png" alt=""></div>
+      <div><div class="blog-title">Hydrogen: Fueling the Green Energy Revolution</div><div class="blog-meta"><div class="meta-avatar" style="background:#9090b8">L</div>Leslie Alexander<div class="meta-dot"></div>5 min read</div></div>
     </div>
   </div>
 </section>
@@ -470,26 +322,11 @@
 <section class="faq-simple">
   <h2 class="reveal">FAQ</h2>
   <p class="faq-sub reveal">Here you will find the answers to the frequently asked questions.</p>
-  <div class="faq-static reveal">
-    <h4>What is green energy?</h4>
-    <p>Green energy, also known as renewable energy, is derived from natural sources that are replenished on a human timescale. This includes solar, wind, hydro, geothermal, and biomass energy, among others.</p>
-  </div>
-  <div class="faq-static reveal reveal-delay-1">
-    <h4>How does green energy benefit the environment?</h4>
-    <p>Green energy reduces the reliance on fossil fuels, lowering greenhouse gas emissions and mitigating climate change. It also helps conserve natural resources and promotes a cleaner, sustainable future.</p>
-  </div>
-  <div class="faq-static reveal reveal-delay-2">
-    <h4>What green energy solutions does your company offer?</h4>
-    <p>We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.</p>
-  </div>
-  <div class="faq-static reveal reveal-delay-3">
-    <h4>What support services do you offer after installing green energy solutions?</h4>
-    <p>We offer ongoing maintenance, monitoring, and support services to ensure the optimal performance and longevity of your green energy system. Our team is ready to assist with any issues that may arise.</p>
-  </div>
-  <div class="faq-static reveal reveal-delay-4">
-    <h4>How do solar panels work?</h4>
-    <p>Solar panels convert sunlight into electricity through photovoltaic cells. These cells generate direct current (DC), which is then converted into usable alternating current (AC) for household or commercial use.</p>
-  </div>
+  <div class="faq-static reveal"><h4>What is green energy?</h4><p>Green energy, also known as renewable energy, is derived from natural sources that are replenished on a human timescale. This includes solar, wind, hydro, geothermal, and biomass energy, among others.</p></div>
+  <div class="faq-static reveal reveal-delay-1"><h4>How does green energy benefit the environment?</h4><p>Green energy reduces the reliance on fossil fuels, lowering greenhouse gas emissions and mitigating climate change. It also helps conserve natural resources and promotes a cleaner, sustainable future.</p></div>
+  <div class="faq-static reveal reveal-delay-2"><h4>What green energy solutions does your company offer?</h4><p>We provide a range of green energy solutions, including solar power systems, wind turbines, energy-efficient appliances, and smart home technologies to enhance energy sustainability.</p></div>
+  <div class="faq-static reveal reveal-delay-3"><h4>What support services do you offer after installing green energy solutions?</h4><p>We offer ongoing maintenance, monitoring, and support services to ensure the optimal performance and longevity of your green energy system. Our team is ready to assist with any issues that may arise.</p></div>
+  <div class="faq-static reveal reveal-delay-4"><h4>How do solar panels work?</h4><p>Solar panels convert sunlight into electricity through photovoltaic cells. These cells generate direct current (DC), which is then converted into usable alternating current (AC) for household or commercial use.</p></div>
 </section>
 
 <!-- ═══ NEWSLETTER ════════════════════════════════════════ -->
@@ -504,14 +341,24 @@
   </div>
   <div class="nl-right">
     <div class="nl-circle"></div>
-    <div class="nl-photo">
-      <img src="/images/windmill.png" alt="Wind energy"/>
+    <!-- <div class="nl-photo"><img src="/images/windmill.png" alt="Wind energy"/></div> -->
+  </div>
+  <div class="nl-vright">
+    <div class="nlr-circle">
+          <div class="nl-photo"><img src="/images/windmill.png" alt="Wind energy"/></div>
     </div>
   </div>
 </section>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+<!-- ═══ FOOTER ════════════════════════════════════════════ -->
 <footer>
+  <!-- Decorative circle with windmill photo, clipped bottom-left -->
+  <div class="footer-deco-ring"></div>
+  <div class="footer-deco-circle">
+    <img src="/images/windmill.png" alt="">
+  </div>
+
   <div class="footer-grid">
     <div>
       <div class="footer-logo-row">
@@ -526,58 +373,19 @@
         </div>
         <span class="footer-logo-text">Flow</span>
       </div>
-      <p class="footer-brand-desc">Your reliable partner for clean, sustainable energy solutions. Powering a greener tomorrow for everyone.</p>
     </div>
-    <div class="f-col">
-      <h5>Platform</h5>
-      <ul>
-        <li><a href="#">Solutions</a></li>
-        <li><a href="#">How it works</a></li>
-        <li><a href="#">Pricing</a></li>
-      </ul>
-    </div>
-    <div class="f-col">
-      <h5>Company</h5>
-      <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Our Mission</a></li>
-        <li><a href="#">Careers <span class="hiring-tag">HIRING</span></a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-    <div class="f-col">
-      <h5>Resources</h5>
-      <ul>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Help Center</a></li>
-        <li><a href="#">Support</a></li>
-      </ul>
-    </div>
+    <div class="f-col"><h5>Platform</h5><ul><li><a href="#">Solutions</a></li><li><a href="#">How it works</a></li><li><a href="#">Pricing</a></li></ul></div>
+    <div class="f-col"><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Our Mission</a></li><li><a href="#">Careers <span class="hiring-tag">HIRING</span></a></li><li><a href="#">Contact</a></li></ul></div>
+    <div class="f-col"><h5>Resources</h5><ul><li><a href="#">Blog</a></li><li><a href="#">Help Center</a></li><li><a href="#">Support</a></li></ul></div>
     <div class="social-list">
-      <a class="social-pill" href="#">
-        <div class="social-icon">
-          <svg viewBox="0 0 18 18" fill="none"><path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm3.45 4.5H10.9c-.18 0-.4.2-.4.48v1.02h2l-.26 2H10.5V16H8.5v-6H7V8h1.5V6.97C8.5 5.37 9.52 4.5 10.98 4.5h1.47v2z" fill="#0d2b1a"/></svg>
-        </div>
-        <span>Follow us on Facebook</span>
-      </a>
-      <a class="social-pill" href="#">
-        <div class="social-icon">
-          <svg viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="3.5" stroke="#0d2b1a" stroke-width="1.6" fill="none"/><circle cx="9" cy="9" r="2.5" stroke="#0d2b1a" stroke-width="1.6" fill="none"/><circle cx="12.5" cy="5.5" r="0.8" fill="#0d2b1a"/></svg>
-        </div>
-        <span>Follow us on Instagram</span>
-      </a>
-      <a class="social-pill" href="#">
-        <div class="social-icon">
-          <svg viewBox="0 0 18 18" fill="none"><path d="M5 4H2v10h3V4zm-1.5-.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm10.5.5h-2.5C10.12 4 9 5.12 9 6.5V4H6v10h3V9.5A1.5 1.5 0 0110.5 8h.5a1.5 1.5 0 011.5 1.5V14H15V8.5C15 6.01 12.99 4 10.5 4z" fill="#0d2b1a"/></svg>
-        </div>
-        <span>Follow us on LinkedIn</span>
-      </a>
+      <a class="social-pill" href="#"><div class="social-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm3.45 4.5H10.9c-.18 0-.4.2-.4.48v1.02h2l-.26 2H10.5V16H8.5v-6H7V8h1.5V6.97C8.5 5.37 9.52 4.5 10.98 4.5h1.47v2z" fill="#0d2b1a"/></svg></div><span>Follow us on Facebook</span></a>
+      <a class="social-pill" href="#"><div class="social-icon"><svg viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="3.5" stroke="#0d2b1a" stroke-width="1.6" fill="none"/><circle cx="9" cy="9" r="2.5" stroke="#0d2b1a" stroke-width="1.6" fill="none"/><circle cx="12.5" cy="5.5" r="0.8" fill="#0d2b1a"/></svg></div><span>Follow us on Instagram</span></a>
+      <a class="social-pill" href="#"><div class="social-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M5 4H2v10h3V4zm-1.5-.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm10.5.5h-2.5C10.12 4 9 5.12 9 6.5V4H6v10h3V9.5A1.5 1.5 0 0110.5 8h.5a1.5 1.5 0 011.5 1.5V14H15V8.5C15 6.01 12.99 4 10.5 4z" fill="#0d2b1a"/></svg></div><span>Follow us on LinkedIn</span></a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2024 Flow. All rights reserved.</p>
-  </div>
+  <div class="footer-bottom"><p>© 2024 Flow. All rights reserved.</p></div>
 </footer>
+
 <script src="/script.js"></script>
 </body>
 </html>

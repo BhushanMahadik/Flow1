@@ -42,17 +42,17 @@ gsap.registerPlugin(ScrollTrigger);
     setWidth += t.offsetWidth + 12;
   });
 
-  gsap.set(track, { x: -80 });
+  gsap.set(track, { x: -64 });
 
   const tween = gsap.to(track, {
-    x: () => -(setWidth + 80),
+    x: () => -(setWidth + 64),
     duration: 35,
     ease: 'none',
     repeat: -1,
     modifiers: {
       x: gsap.utils.unitize(x => {
         const val = parseFloat(x);
-        if (val <= -(setWidth + 80)) return -80;
+        if (val <= -(setWidth + 64)) return -64;
         return val;
       })
     }
@@ -62,33 +62,100 @@ gsap.registerPlugin(ScrollTrigger);
   track.parentElement.addEventListener('mouseleave', () => tween.play());
 })();
 
-// Testimonial strip infinite scroll
+// ─── Testimonial strip with working progress bar ────────
 (function() {
   const track = document.getElementById('testimonialTrack');
   if (!track) return;
 
-  const cards = track.querySelectorAll('.t-card:not(.t-clone)');
-  let setWidth = 0;
-  cards.forEach(c => {
-    setWidth += c.offsetWidth + 16;
+  const CARD_DURATION = 4000; // ms per card auto-advance
+  const cards = Array.from(track.querySelectorAll('.t-card:not(.t-clone)'));
+  const totalCards = cards.length;
+
+  // Build progress bar dots in .t-progress
+  const progressEl = document.getElementById('tProgress');
+  if (!progressEl) return;
+
+  // Create dot + fill elements
+  progressEl.innerHTML = '';
+  cards.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 't-prog-dot' + (i === 0 ? ' active' : '');
+    const fill = document.createElement('div');
+    fill.className = 't-prog-fill';
+    dot.appendChild(fill);
+    dot.addEventListener('click', () => goToCard(i));
+    progressEl.appendChild(dot);
   });
 
-  gsap.set(track, { x: -80 });
+  let currentIndex = 0;
+  let animFrame;
+  let startTime = null;
+  let paused = false;
 
-  const tween = gsap.to(track, {
-    x: () => -(setWidth + 80),
-    duration: 30,
-    ease: 'none',
-    repeat: -1,
-    modifiers: {
-      x: gsap.utils.unitize(x => {
-        const val = parseFloat(x);
-        if (val <= -(setWidth + 80)) return -80;
-        return val;
-      })
+  function goToCard(index) {
+    currentIndex = index;
+    startTime = null;
+    updateDots();
+    scrollToCard(index);
+    cancelAnimationFrame(animFrame);
+    if (!paused) tick();
+  }
+
+  function updateDots() {
+    progressEl.querySelectorAll('.t-prog-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+      const fill = dot.querySelector('.t-prog-fill');
+      fill.style.transition = 'none';
+      fill.style.width = i < currentIndex ? '100%' : '0%';
+    });
+  }
+
+  function scrollToCard(index) {
+    // Calculate x offset for the card
+    let x = 64; // left padding offset
+    for (let i = 0; i < index; i++) {
+      x += cards[i].offsetWidth + 16;
     }
-  });
+    gsap.to(track, { x: -x, duration: 0.5, ease: 'power2.inOut' });
+  }
 
-  track.parentElement.addEventListener('mouseenter', () => tween.pause());
-  track.parentElement.addEventListener('mouseleave', () => tween.play());
+  function tick(timestamp) {
+    if (!startTime) startTime = timestamp || performance.now();
+    const elapsed = (timestamp || performance.now()) - startTime;
+    const progress = Math.min(elapsed / CARD_DURATION, 1);
+
+    // Animate current fill
+    const currentDot = progressEl.querySelectorAll('.t-prog-dot')[currentIndex];
+    if (currentDot) {
+      const fill = currentDot.querySelector('.t-prog-fill');
+      fill.style.transition = 'none';
+      fill.style.width = (progress * 100) + '%';
+    }
+
+    if (progress >= 1) {
+      // Mark current as complete
+      if (currentDot) {
+        currentDot.querySelector('.t-prog-fill').style.width = '100%';
+      }
+      currentIndex = (currentIndex + 1) % totalCards;
+      startTime = null;
+      updateDots();
+      scrollToCard(currentIndex);
+    }
+
+    animFrame = requestAnimationFrame(tick);
+  }
+
+  // Start
+  updateDots();
+  scrollToCard(0);
+  animFrame = requestAnimationFrame(tick);
+
+  // Pause on hover
+  track.parentElement.addEventListener('mouseenter', () => { paused = true; cancelAnimationFrame(animFrame); });
+  track.parentElement.addEventListener('mouseleave', () => {
+    paused = false;
+    startTime = null;
+    animFrame = requestAnimationFrame(tick);
+  });
 })();
