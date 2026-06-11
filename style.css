@@ -238,7 +238,7 @@ button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;outline:none}
   width:7px;
   height:7px;
   border-radius:50%;
-  background:#022C22;
+  background:#BEF264;
   flex-shrink:0;
 }
 .label-txt{
@@ -375,11 +375,11 @@ button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;outline:none}
 .btn-dark:hover{background:#1a3020;transform:scale(1.02)}
 
 /* ─── FAQ ACCORDION ─────────────────────────────────────── */
-.faq-bg{background:var(--cream)}
+.faq-bg{background:#FFF7ED; max-width: 100%; align-items: start;}
 .faq-outer{max-width:1500px;margin:0 auto}
 .faq-label{display:flex;align-items:center;gap:10px;padding:36px 64px 18px;border-bottom:1px solid #ddd8d0;}
 .faq-lbl-line{display:none;}
-.faq-inner{padding:60px 64px 80px;display:grid;grid-template-columns:1fr 1.5fr;gap:80px;min-height:auto;align-items:stretch;justify-content:space-between;min-width:100%;}
+.faq-inner{padding:60px 64px 80px;display:grid;grid-template-columns:1fr 1.5fr;gap:192px;min-height:auto;align-items:stretch;justify-content:space-between;min-width:100%;}
 .faq-left{display:flex;flex-direction:column;height:100%;}
 .faq-left h2{font-family:'Figtree',sans-serif;font-size:62px;font-weight:400;line-height:1.1;margin-bottom:22px;letter-spacing:-3%;text-align:left;min-width:105%;}
 .faq-left p{font-size:14px;color:var(--text-muted);line-height:1.8;text-align:left;font-family:'Figtree',sans-serif;flex:1;}
@@ -387,7 +387,7 @@ button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;outline:none}
 .faq-item{border-bottom:1px solid #ddd;padding:28px 0}
 .faq-item:first-child{border-top:none;padding-top:0;}
 .faq-q{font-family:'Figtree',sans-serif;font-size:18px;font-weight:500;margin-bottom:10px;color:#1a1a1a;text-align:left;letter-spacing:-0.4%;}
-.faq-a{font-family:'Figtree',sans-serif;font-size:16px;color:var(--text-muted);line-height:1.8;text-align:left;font-weight:400;letter-spacing:-0.4%;}
+.faq-a{font-family:'Figtree',sans-serif;font-size:16px;color:var(--text-muted);line-height:1.8;text-align:left;font-weight:400;letter-spacing:-0.4%; max-width: 592px;}
 
 /* ─── BLOG ──────────────────────────────────────────────── */
 .blog-section{max-height: 803px; padding:80px 64px;display:grid;grid-template-columns:1fr 1fr;gap:136px;align-items:start;max-width:100%; margin:0 80;}
