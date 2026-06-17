@@ -78,7 +78,6 @@ button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;outline:none}
 }
 .hero-card-wind img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75) contrast(0.9) saturate(0.7) hue-rotate(20deg);transform:scale(1.05);}
 .hero-card-solar{right:100px;top:550px;width:318px;height:394px;border-radius:16px;animation:slideRight 0.85s cubic-bezier(0.22,1,0.36,1) 0.4s both;position:absolute;overflow:hidden;}
-/* ─── Hero Solar Card – fade to hero bg at bottom ───────── */
 .hero-card-solar::after{
   content:'';
   position:absolute;
@@ -199,7 +198,6 @@ button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;outline:none}
   font-size:18px;
   font-weight:500;
   color:#022C22;
-  /* text-decoration:underline; */
   display:none;
   font-family:'Figtree',sans-serif;
   line-height: 64px;
@@ -540,7 +538,6 @@ button{cursor:pointer;font-family:'Figtree',sans-serif;border:none;outline:none}
 }
 
 /* ─── FOOTER ─────────────────────────────────────────────── */
-/* NOTE: ::before and ::after circle decorations have been removed */
 footer{
   background:#022C22;
   padding:80px 64px 0;
@@ -568,8 +565,6 @@ footer{
 .social-icon{width:36px;height:36px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .social-icon svg{width:18px;height:18px}
 .social-pill span{font-family:'Figtree',sans-serif;color:rgba(255,255,255,0.78);font-size:13px;font-weight:450}
-
-/* Footer bottom — increased margin-top from 60px to 120px for more breathing room */
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,0.07);
   padding:22px 0 28px;
@@ -609,7 +604,6 @@ footer{
   .nav-links{display:none}
   .nav-cta{width:auto;padding:0 20px}
 
-  /* HERO: switch from absolute layout to a flex stack */
   .hero{
     min-height:auto;
     flex-direction:column;
@@ -629,7 +623,6 @@ footer{
   .hero-h1{font-size:56px;letter-spacing:-1.5px}
   .hero-p{font-size:16px;margin-bottom:32px}
 
-  /* Image cards become a 2x2 grid below the text */
   .hero-card{
     position:relative;
     left:auto !important;
@@ -731,11 +724,73 @@ footer{
   .nav-logo-icon{width:34px;height:34px}
   .nav-cta{height:38px;font-size:13px;padding:0 16px}
 
-  .hero{padding:32px 16px 40px}
+  /* ─── HERO: center text, hide absolute cards, show strip ─ */
+  .hero{
+    padding:32px 0 0;
+    flex-direction:column;
+    align-items:center;
+    min-height:auto;
+    overflow:hidden;
+  }
+  .hero-center{
+    padding:32px 20px 24px;
+    padding-top:32px;
+    order:1;
+  }
   .hero-badge{font-size:12px;margin-bottom:20px}
   .hero-h1{font-size:34px;letter-spacing:-1px;margin-bottom:20px}
   .hero-p{font-size:15px;margin-bottom:28px}
-  .hero-card{height:180px !important;border-radius:14px !important}
+  .hero-btns{flex-direction:column;width:100%;gap:10px}
+  .btn-lime,.btn-ghost-white{width:100%;text-align:center}
+
+  /* Hide the old absolute/grid cards */
+  .hero-card{display:none !important}
+  .hero-grid{display:none !important}
+
+  /* ─── Horizontal swipe strip ─────────────────────────── */
+  .hero-grid-strip{
+    display:flex;
+    gap:12px;
+    padding:20px 20px 0;
+    overflow-x:auto;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    order:2;
+    width:100%;
+    box-sizing:border-box;
+  }
+  .hero-grid-strip::-webkit-scrollbar{display:none}
+  .hero-grid-strip .hero-card{
+    display:block !important;
+    flex-shrink:0 !important;
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    width:160px !important;
+    height:120px !important;
+    border-radius:14px !important;
+    animation:none !important;
+    transform:none !important;
+  }
+  /* Remove all overlays in strip */
+  .hero-grid-strip .hero-card::before,
+  .hero-grid-strip .hero-card::after{display:none !important}
+  /* Restore natural image rendering */
+  .hero-grid-strip .hero-card img{
+    filter:brightness(0.82) !important;
+    transform:none !important;
+  }
+  .hero-strip-hint{
+    display:block;
+    text-align:center;
+    font-size:11px;
+    color:rgba(255,255,255,0.3);
+    letter-spacing:0.06em;
+    padding:10px 0 24px;
+    order:3;
+    font-family:'Figtree',sans-serif;
+  }
 
   .partners-head h2{font-size:22px}
   .partners-head{padding:0 16px 24px}
@@ -812,7 +867,12 @@ footer{
   .nl-form input{padding:13px 18px}
   .nl-form button{width:100%;padding:13px 18px}
 
-  footer{padding:36px 16px 0;background:none}
+  /* ─── FOOTER FIX: restore background, drop broken image ─ */
+  footer{
+    padding:36px 16px 0;
+    background:#022C22;
+    background-image:none;
+  }
   .footer-grid{grid-template-columns:1fr;gap:28px}
   .footer-logo-text{font-size:18px}
   .f-col h5{margin-bottom:16px}
